@@ -1,0 +1,114 @@
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    min-width: 200px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    height: 250px;
+}
+
+.product-image {
+    width: auto; /* This will adjust width according to the aspect ratio of the image */
+    max-width: 80%;
+    height: 100px; /* Fixed height for all images */
+    margin: auto auto;
+    object-fit: scale-down; /* This will ensure the image scales down to fit the box without cropping */
+    display: block; /* Ensures that the image is properly centered */
+    transition: all .3s ease;
+}
+
+
+.product-discount {
+    font-size: .8rem;
+    margin: 0;
+}
+
+
+
+.pages-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 8px;
+}
+
+.page-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    cursor: pointer;
+}
+
+.page-button.active {
+    background-color: #fff;
+    color: black;
+    border: 1px solid #333;
+}
+
+.page-button:hover {
+    background-color: #fff;
+    color: black;
+    border: 1px solid #333;
+}
+
+.product-image:hover {
+    transform: scale(1.5);
+}
+
+.product-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+    margin: 0;
+}
+
+.product-brand {
+    font-size: 0.9rem;
+    text-align: left;
+    font-weight: normal;
+    margin: 0;
+}
+
+.product:hover {
+    border: 1px solid #444;
+    box-shadow: 0 0 5px #555;
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button.add-cart-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.product-price {
+    font-size: .9rem;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+button.add-cart-btn:hover {
+    background-color: #347eb3;
+}
+
+button.add-cart-btn:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}

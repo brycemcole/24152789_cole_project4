@@ -1,0 +1,143 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.checkout-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+    height: 100%;
+    padding: 20px 72px;
+}
+
+.cart-items > .cart-row {
+    color: black;
+    padding: 12px 0;
+    position: relative;
+}
+
+.checkout-column span {
+    position: relative;
+}
+
+.checkout-column span label {
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    font-size: .7rem;
+    pointer-events: none;
+}
+
+.checkout-column input {
+    padding: 5px 9px;
+    padding-top: 18px;
+    border-radius: 11px;
+    background: #efefef;
+    border: 1px solid #d4d4d4;
+    font-size: .875rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.empty-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    margin: auto;
+    font-size: .8rem;
+    color: #797979;
+    gap: 15px;
+}
+
+.empty-message-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    opacity: .5;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.purchase-btn {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background: #41ae65;
+    border: 1px solid #4b9263;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    flex: 0 0 auto;
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.cart-row span {
+    width: 25%;
+}
+
+.cart-total {
+    padding: 0 8%;
+}
+
+.cart-total-shipping, .cart-total-tax, .cart-total-subtitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.cart-column {
+    text-align: center;
+}
+
+.cart-item-image {
+    margin-right: auto;
+}
+
+.cart-image {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.checkout-cart-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+    padding: 20px 72px;
+    border-left: 1px solid #d0cece;
+}
+
+.cart-row {
+    color: #797979;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom: 1px solid #d0cece;
+}
+
+.remove-btn {
+    color: #797979;
+    cursor: pointer;
+    position: absolute;
+    left: -23px;
+    margin: 0;
+    padding: 0;
+    background: 0;
+    border:0;
+}
+
+.remove-btn > span {
+    width: 100%;
+}

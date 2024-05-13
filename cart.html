@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkout - Bryce's Shoes</title>
+    <!-- style sheets -->
+    <link rel="stylesheet" type="text/css" href="css/navbar-styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/cart-styles.css" />
+
+    <!-- required tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="author" content="Bryce Cole" />
+    <meta
+      name="description"
+      content="welcome to my shop, browse the products and add the ones you like to your cart."
+    />
+    <meta name="keywords" content="checkout,cart,bryce,shoes,jordans" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="navbar-placeholder"></div>
+    <script src="js/nav.js"></script>
+    <div class="container">
+      <div class="checkout-column">
+        <span>
+          <label for="name">Name</label>
+          <input type="text" />
+        </span>
+        <span>
+          <label for="email">Email</label>
+          <input type="text" />
+        </span>
+        <span>
+          <label for="phone">Phone</label>
+          <input type="text" />
+        </span>
+        <span>
+          <label for="address">Address</label>
+          <input type="text" />
+        </span>
+        <span>
+          <label for="address">Address 2</label>
+          <input type="text" />
+        </span>
+        <span>
+          <label for="city">City</label>
+          <input type="text" />
+        </span>
+        <span>
+          <label for="state">State</label>
+          <input type="text" />
+        </span>
+        <span>
+          <label for="zip">Zip</label>
+          <input type="text" />
+        </span>
+        <span>
+          <label for="card-holder">Name on Card</label>
+          <input type="text" />
+        </span>
+        <span>
+          <label for="card-number">Card Number</label>
+          <input type="text" />
+        </span>
+        <span>
+          <label for="cvv">CVV</label>
+          <input type="text" />
+        </span>
+        <button class="purchase-btn">Purchase</button>
+      </div>
+      <div class="checkout-cart-column">
+        <div class="cart-row">
+          <span class="cart-item cart-header cart-column"> </span>
+          <span class="cart-item cart-header cart-column">Item</span>
+          <span class="cart-quantity cart-header cart-column">Quantity</span>
+          <span class="cart-price cart-header cart-column">Price</span>
+        </div>
+        <div class="cart-items">
+          <div class="empty-message">
+            <img
+              src="images/my-cat-socks.png"
+              class="empty-message-image"
+              alt="my small cat named Socks, hes 2 years old and very cute"
+            />
+            <span class="empty-message-text">
+              Your cart is still empty, take this with you
+            </span>
+          </div>
+        </div>
+        <div class="cart-total">
+          <div class="cart-total-subtitle">
+            <span class="cart-total-title">Subtotal</span>
+            <span class="cart-total-price">
+              <strong>$0.00</strong>
+            </span>
+          </div>
+          <div class="cart-total-tax">
+            <span>Tax</span>
+            <span>
+              <strong>TBA</strong>
+            </span>
+          </div>
+          <div class="cart-total-shipping">
+            <span>Shipping</span>
+            <span>
+              <strong>Free</strong>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const cartItemsContainer = document.querySelector(".cart-items");
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartTotalContainer = document.querySelector(".cart-total-price");
+        let cartTotal = 0;
+        if (cart.length > 0) {
+          const emptyMessage = document.querySelector(".empty-message");
+          if (emptyMessage) {
+            cartItemsContainer.removeChild(emptyMessage);
+          }
+        }
+
+        function removeFromCart(index) {
+          cart.splice(index, 1);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          window.location.reload();
+        }
+
+        function updateQuantity(index, quantity) {
+          const product = cart[index];
+          product.quantity = quantity;
+          localStorage.setItem("cart", JSON.stringify(cart));
+          window.location.reload(); // having it update without refresh is outside the scope
+        }
+
+        // heres how we create the cart items
+        function createCartItem(product, index) {
+          const cartRow = document.createElement("div");
+          cartRow.classList.add("cart-row");
+
+          const cartRowContents = `
+                <div class="cart-image cart-column">
+                  <img class="cart-item-image" src="${product.image}" alt="${
+            product.title
+          }" style="width:60px; margin-right: auto;">
+                </div>
+                <span class="cart-title cart-column">${product.title}</span>
+                <span class="cart-quantity cart-column">
+                  <input type="number" value="${
+                    product.quantity
+                  }" style="width:35px;" class="quantity-input">
+                </span>
+                <span class="cart-price cart-column"><strong>$${product.price.replace(
+                  /[^\d.-]/g,
+                  ""
+                )}</strong></span>
+                <button class="remove-btn" data-index="${index}"><span class="material-symbols-outlined">
+close
+</span></button>
+              `;
+          cartRow.innerHTML = cartRowContents;
+
+          // remove item from cart
+          cartRow
+            .querySelector(".remove-btn")
+            .addEventListener("click", function () {
+              removeFromCart(parseInt(this.getAttribute("data-index")));
+            });
+
+          cartRow
+            .querySelector(".quantity-input")
+            .addEventListener("change", (event) => {
+              const newQuantity = parseInt(event.target.value, 10);
+              if (newQuantity > 0) {
+                updateQuantity(index, newQuantity);
+              }
+            });
+
+          return cartRow;
+        }
+
+        cart.forEach((product, index) => {
+          const price = parseFloat(product.price.replace(/[^\d.-]/g, ""));
+          cartTotal += price * product.quantity;
+          const cartItem = createCartItem(product, index);
+          cartItemsContainer.appendChild(cartItem);
+        });
+
+        cartTotalContainer.innerHTML = `<strong>$${cartTotal.toFixed(
+          2
+        )}</strong>`;
+      });
+    </script>
+  </body>
+</html>

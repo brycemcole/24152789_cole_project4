@@ -1,0 +1,88 @@
+nav {
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    gap: 20px;
+    background: black;
+    height: 50px;
+    z-index: 10;
+    position: fixed;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border: 1px solid #f1bcce;
+    box-shadow: 0 0 5px #FF3D7F;
+}
+
+nav a:last-child {
+    margin-right: auto;
+}
+
+nav > span {
+    position: absolute;
+    top: 13px;
+    display: flex;
+    flex-direction: row;
+    gap: 45px;
+}
+
+nav a {
+    color: white;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+nav a:hover {
+    color: #FFFFFF; 
+    text-shadow:
+      0 0 5px #FFFFFF, 
+      0 0 10px #FF3D7F, 
+      0 0 15px #FF87AB, 
+      0 0 20px #FF3D7F;
+  }
+
+.home-link {
+    height: 50px;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navbar-text {
+    font-family: "Jacquard 12", system-ui !important;  
+    font-size: 2.4rem;
+    color: white;
+}
+
+.navbar-icon {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    margin-right: auto;
+    margin-left: 10px;
+}
+
+body {
+    margin-top: 100px;
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 100px;
+}
+
+nav span a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+nav span a .material-symbols-outlined {
+    font-size: 1.3rem;
+    vertical-align: -3px;
+}

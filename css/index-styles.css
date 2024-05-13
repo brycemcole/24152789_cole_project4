@@ -1,0 +1,86 @@
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      text-shadow:
+        0 0 5px #FFFFFF,
+        0 0 10px #FF3D7F,
+        0 0 15px #FF87AB,
+        0 0 20px #FF3D7F;
+      opacity: 1;
+    }
+    20%, 24%, 55% {
+      text-shadow:
+        0 0 2px #FFFFFF,
+        0 0 8px #FF3D7F,
+        0 0 10px #FF87AB,
+        0 0 15px #FF3D7F;
+      opacity: 0.6;
+    }
+  }
+
+body {
+    max-width: 100dvw;
+    overflow-x: hidden;
+    margin-top: 100px !important;
+}
+
+.trending-items, .sale-items {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding-left: 10px;
+    padding-right: 10px;
+    gap: 10px;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.home-link {
+    display: none !important
+}
+
+.header-text {
+    position: relative;
+    text-align: center;
+    font-family: "Jacquard 12", system-ui !important;  
+    color: white;
+    text-shadow:
+    0 0 5px #FFFFFF, 
+    0 0 10px #FF3D7F, 
+    0 0 15px #FF87AB, 
+    0 0 20px #FF3D7F;
+    pointer-events: none;
+    animation: flicker 1.5s infinite alternate;
+
+    font-size: 5.4rem;
+    margin: 0;
+    top: -35px;
+    z-index: 2;
+}
+
+.header {
+    position: relative;
+    top: -50px;
+    left: -8px;
+    max-width: 100dvw;
+}
+
+.header-text-container {
+    position: relative;
+    top: 50px;
+    width: 100%;
+}
+
+.header-image {
+    position: absolute;
+    top: 0;
+    border-bottom: 1px solid black;
+    width: 100dvw;
+    height: 120px;
+    object-fit: cover;
+
+}
+
+.items-container {
+    margin: 0 13px;
+}
